@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Recipe} from "../recipe.model";
 import {RecipeService} from "../recipe.service";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -12,16 +12,18 @@ import {Subscription} from "rxjs";
 export class RecipeDetailComponent implements OnInit, OnDestroy {
   recipe: Recipe;
   idSubscription: Subscription;
+  id: number;
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute) {
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
     this.idSubscription = this.route.params
       .subscribe(
         (params: Params) => {
-          const id = +params['id']
-          this.recipe = this.recipeService.getRecipeById(id);
+          this.id = +params['id']
+          this.recipe = this.recipeService.getRecipeById(this.id);
         }
       )
 
@@ -33,6 +35,11 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.idSubscription.unsubscribe();
+  }
+
+  onEditRecipe() {
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
+    this.router.navigate(['edit'], {relativeTo: this.route});
   }
 
 }
