@@ -9,28 +9,18 @@ import {Subject} from "rxjs";
 })
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
-  private recipes: Recipe[] = [
-    new Recipe("Pad Thai",
-      "Amazing Pad Thai",
-      "https://janinaandfood.com/wp-content/uploads/2020/06/B1044FC1-7EEE-478F-8FAE-664FD46555BF-4AE233AB-7532-45B8-9E8A-E7DC36AA06A3-min-1-1060x1059.jpg",
-      [
-        new Ingredient('Dried Noodle', 1),
-        new Ingredient("Carrots", 2)
-      ]),
-    new Recipe("Another Pad Thai",
-      "Another Amazing Pad Thai",
-      "https://janinaandfood.com/wp-content/uploads/2020/06/B1044FC1-7EEE-478F-8FAE-664FD46555BF-4AE233AB-7532-45B8-9E8A-E7DC36AA06A3-min-1-1060x1059.jpg",
-      [
-        new Ingredient('Fresh Noodle', 1),
-        new Ingredient("Shallots", 2)
-      ])
-  ];
+  private recipes: Recipe[] = []
 
   constructor(private shoppingListService: ShoppingListService) {
   }
 
   get recipeList() {
     return this.recipes.slice();
+  }
+
+  set recipeList(fetchedRecipes: Recipe[]) {
+    this.recipes = fetchedRecipes;
+    this.recipesChanged.next(this.recipes);
   }
 
   addIngredientsToShippingList(ingredients: Ingredient[]) {
