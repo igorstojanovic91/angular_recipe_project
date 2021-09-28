@@ -107,7 +107,7 @@ export class AuthService {
           errorMessage = "Invalid Password"
           break;
         case "EMAIL_NOT_FOUND":
-          errorMessage = "EMail was not found"
+          errorMessage = "Email was not found"
           break;
       }
       return throwError(errorMessage);
