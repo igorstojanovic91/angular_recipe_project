@@ -1,7 +1,20 @@
 # CourseProject
 
 ## About the project
-This project was created in order to deepen my knowledge in Angular as part of the amazing course "Angular - The complete Guide (2021 Edition)" from Maximilian Schwarzmüller.
+This project was created in order to deepen my knowledge in Angular as part of the amazing course ["Angular - The complete Guide (2021 Edition)"](https://www.udemy.com/course/the-complete-guide-to-angular-2/) from Maximilian Schwarzmüller.
+The course included various topics, such as:
+
+* Components, Services, Driectives
+* Dependency Injection
+* Client-Side Routing
+* Observables
+* Forms
+* Pipes
+* HTTP Requests
+* Authentication with Firebase
+* Modules & Lazy Loading
+* and so on...
+
 
 
 ## Technical Info
