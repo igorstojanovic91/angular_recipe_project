@@ -15,6 +15,8 @@ The course included various topics, such as:
 * Modules & Lazy Loading
 * and so on...
 
+You can have a look here (Posted 1st October 2021, will not be maintained):
+https://ng-course-recipe-book-4477d.firebaseapp.com/
 
 
 ## Technical Info
