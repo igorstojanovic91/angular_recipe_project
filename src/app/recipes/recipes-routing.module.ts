@@ -4,7 +4,7 @@ import {RecipeEditComponent} from "./recipe-edit/recipe-edit.component";
 import {RecipeDetailComponent} from "./recipe-detail/recipe-detail.component";
 import {RecipeResolverService} from "./recipe-resolver.service";
 import {RecipesComponent} from "./recipes.component";
-import {AuthGuard} from "../auth/auth/auth-guard.service";
+import {AuthGuard} from "../auth/auth-guard.service";
 import {RouterModule} from "@angular/router";
 
 const routes = [
