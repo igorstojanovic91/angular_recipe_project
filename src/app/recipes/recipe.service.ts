@@ -1,53 +1,33 @@
 import {Injectable} from '@angular/core';
 import {Recipe} from "./recipe.model";
 import {Ingredient} from "../shared/ingredient.model";
-import {Subject} from "rxjs";
 import {Store} from "@ngrx/store";
 import * as ShoppingListActions from "../shopping-list/store/shopping-list.actions";
 import {AppState} from "../store/app.reducer";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-  recipesChanged = new Subject<Recipe[]>();
-  private recipes: Recipe[] = []
+  ROUTE_URL = 'https://ng-course-recipe-book-4477d-default-rtdb.europe-west1.firebasedatabase.app/'
+  RECIPES_ENDPOINT = 'recipes.json'
 
   constructor(
-    private store: Store<AppState>) {
-  }
-
-  get recipeList() {
-    return this.recipes.slice();
-  }
-
-  set recipeList(fetchedRecipes: Recipe[]) {
-    this.recipes = fetchedRecipes;
-    this.recipesChanged.next(this.recipes);
+    private store: Store<AppState>,
+    private http: HttpClient,) {
   }
 
   addIngredientsToShippingList(ingredients: Ingredient[]) {
-    //this.shoppingListService.addIngredients(ingredients);
     this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients))
   }
 
-  getRecipeById(id: number): Recipe {
-    return this.recipes[id];
+  fetchRecipes() {
+    return this.http.get<Recipe[]>(this.ROUTE_URL + this.RECIPES_ENDPOINT)
   }
 
-  addRecipe(recipe: Recipe) {
-    this.recipes.push(recipe)
-    this.recipesChanged.next(this.recipes.slice())
-  }
-
-  updateRecipe(index: number, newRecipe: Recipe) {
-    this.recipes[index] = newRecipe;
-    this.recipesChanged.next(this.recipes.slice())
-  }
-
-  deleteRecipe(index: number) {
-    this.recipes.splice(index, 1);
-    this.recipesChanged.next(this.recipes.slice())
+  storeRecipes(recipes: Recipe[]) {
+    return this.http.put(this.ROUTE_URL + this.RECIPES_ENDPOINT, recipes)
   }
 
 

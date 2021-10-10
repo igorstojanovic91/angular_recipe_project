@@ -14,6 +14,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {AuthEffects} from "./auth/store/auth.effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {StoreRouterConnectingModule} from "@ngrx/router-store";
+import {RecipeEffects} from "./recipes/store/recipe.effects";
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import {StoreRouterConnectingModule} from "@ngrx/router-store";
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot(fromApp.appRedcuer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, RecipeEffects]),
     StoreDevtoolsModule.instrument({logOnly: environment.production}),
     StoreRouterConnectingModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {

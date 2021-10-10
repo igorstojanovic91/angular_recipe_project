@@ -42,7 +42,7 @@ export function shoppingListReducer(state: ShoppingListState = initState,
         editedIngredient: null
       }
     case ShoppingListActions.DELETE_INGREDIENT:
-      return  {
+      return {
         ...state,
         ingredients: state.ingredients.filter((ingredient, index) => {
           return index !== state.editedIngredientIndex
@@ -52,7 +52,7 @@ export function shoppingListReducer(state: ShoppingListState = initState,
       return {
         ...state,
         editedIngredientIndex: action.payload,
-        editedIngredient:  {...state.ingredients[action.payload]}
+        editedIngredient: {...state.ingredients[action.payload]}
       }
     case ShoppingListActions.STOP_EDIT:
       return {

@@ -13,7 +13,8 @@ export class AlertComponent implements OnInit {
     this.close.emit();
   }
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

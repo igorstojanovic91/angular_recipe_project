@@ -11,4 +11,5 @@ const routes = [
   exports: [RouterModule]
 
 })
-export class ShoppingListRoutingModule{}
+export class ShoppingListRoutingModule {
+}

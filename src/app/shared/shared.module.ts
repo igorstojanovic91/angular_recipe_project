@@ -20,5 +20,5 @@ import {CommonModule} from "@angular/common";
     DropdownDirective
   ],
 })
-export class SharedModule{
+export class SharedModule {
 }
